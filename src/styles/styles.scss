@@ -1,5 +1,15 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+@import "normalize";
 @import "variables";
+@import "navbar";
 
 body {
-  background: $white;
+  font-family: $montserrat;
+  background: $carbon;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    background: lightblue;
+  }
 }

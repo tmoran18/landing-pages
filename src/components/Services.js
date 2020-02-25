@@ -1,12 +1,13 @@
 import React from "react";
-import "../styles/styles.scss";
 
-function Services() {
-  return (
-    <div>
-      <h1>Services</h1>
-    </div>
-  );
+class Services extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Services Page</h1>
+      </div>
+    );
+  }
 }
 
 export default Services;

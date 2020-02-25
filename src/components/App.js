@@ -1,59 +1,41 @@
 import React from "react";
+import Nav from "./Nav";
 import About from "./About";
 import Categories from "./Categories";
 import Services from "./Services";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Header from "./Header";
 
 import "../styles/styles.scss";
 
-function App() {
-  return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/categories">Categories</Link>
-            </li>
-          </ul>
-        </nav>
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/categories">
-            <Users />
-          </Route>
-          <Route path="/services">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-  );
+class App extends React.Component {
+  render() {
+    const mystyle = {
+      backgroundColor: "DodgerBlue",
+      border: "1px solid red",
+      height: "100px"
+    };
+    return (
+      <Router>
+        <div>
+          <Nav style={mystyle} />
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/about" exact component={About} />
+            <Route path="/services" exact component={Services} />
+            <Route path="/categories" exact component={Categories} />
+          </Switch>
+        </div>
+      </Router>
+    );
+  }
 }
 
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function About() {
-  return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
-}
+const Home = () => (
+  <div>
+    <h1>Home Page</h1>
+  </div>
+);
 
 export default App;
