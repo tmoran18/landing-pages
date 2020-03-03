@@ -1,25 +1,28 @@
 import React from "react";
 import Nav from "./Nav";
+import SideDrawNav from "./SideDrawNav";
 import About from "./About";
 import Categories from "./Categories";
 import Services from "./Services";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Header from "./Header";
-
 import "../styles/styles.scss";
 
 class App extends React.Component {
+  state = {
+    sideDrawNavOpen: false
+  };
+
+  sideDrawNavToggleClickHandler = () => {
+    this.setState({ sideDrawNavOpen: !this.state.sideDrawNavOpen });
+  };
+
   render() {
-    const mystyle = {
-      backgroundColor: "DodgerBlue",
-      border: "1px solid red",
-      height: "100px"
-    };
     return (
       <Router>
-        <div>
-          <Nav style={mystyle} />
+        <div style={{ height: "100%" }}>
+          <Nav sideDrawNavClickHandler={this.sideDrawNavToggleClickHandler} />
+          <sideDrawNav show={this.state.sideDrawNavOpen} />
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/about" exact component={About} />
@@ -39,3 +42,9 @@ const Home = () => (
 );
 
 export default App;
+
+// todo
+// Make a stateless functional component called toggleHamburger
+// It will be a 3 divs (classname) wrapped in a buttontag
+// Import it into your navbar in a div
+// create the sidedraw or overlay nav

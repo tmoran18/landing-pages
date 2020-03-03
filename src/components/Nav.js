@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import HamburgerButton from "./HamburgerButton";
 
 class Nav extends React.Component {
   render() {
     return (
-      <div className="navbar">
+      <nav className="navbar">
+        <div></div>
         <h1>iD</h1>
         <ul className="nav-links">
           <Link className="link-styles" to="/">
@@ -20,7 +22,8 @@ class Nav extends React.Component {
             <li>CATEGORIES</li>
           </Link>
         </ul>
-      </div>
+        <HamburgerButton click={this.props.sideDrawNavClickHandler} />
+      </nav>
     );
   }
 }
